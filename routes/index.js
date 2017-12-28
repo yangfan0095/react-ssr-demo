@@ -6,8 +6,16 @@ let microdata = {
   styleVersion: '1.1.1',
 };
 
+// router.get('/', async(ctx, next) => {
+//   ctx.body = ctx.render('Home', {
+//     microdata: microdata,
+//     mydata: {
+//       nick: 'server render body'
+//     }
+//   }, true)
+// })
 router.get('/', async(ctx, next) => {
-  ctx.body = ctx.render('Home', {
+  ctx.body = ctx.render('App', {
     microdata: microdata,
     mydata: {
       nick: 'server render body'
@@ -15,8 +23,13 @@ router.get('/', async(ctx, next) => {
   }, true)
 })
 
-router.get('/string', async(ctx, next) => {
-  ctx.body = 'koa2 string'
+router.get('/app/:id', async(ctx, next) => {
+  ctx.body = ctx.render('App', {
+    microdata: microdata,
+    mydata: {
+      nick: 'server render body'
+    }
+  }, true)
 })
 
 router.get('/json', async(ctx, next) => {
